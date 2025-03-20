@@ -1,0 +1,29 @@
+/* src/app/app.component.scss */
+.app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    
+    .app-header {
+      text-align: center;
+      margin-bottom: 30px;
+      
+      h1 {
+        color: #4285f4;
+      }
+    }
+    
+    .app-content {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    
+    .app-footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #777;
+      font-size: 14px;
+    }
+  }

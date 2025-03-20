@@ -1,0 +1,19 @@
+<!-- src/app/components/todo-list/todo-list.component.html -->
+<div class="todo-list">
+    <div *ngIf="(todos$ | async)?.length === 0" class="empty-state">
+      No todos yet. Add one above!
+    </div>
+    
+    <div *ngFor="let todo of todos$ | async" class="todo-item" [class.completed]="todo.completed">
+      <div class="todo-content">
+        <input 
+          type="checkbox" 
+          [checked]="todo.completed" 
+          (change)="toggleTodo(todo.id)" 
+          class="todo-checkbox"
+        >
+        <span class="todo-title">{{ todo.title }}</span>
+      </div>
+      <button (click)="deleteTodo(todo.id)" class="delete-button">✕</button>
+    </div>
+  </div>
