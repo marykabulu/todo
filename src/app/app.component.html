@@ -1,14 +1,19 @@
-<!-- src/app/app.component.html -->
+<!-- Root layout container for the app -->
 <div class="app-container">
+  <!-- Application header with title -->
   <header class="app-header">
     <h1>{{ title }}</h1>
   </header>
   
+  <!-- Main content area: compose the form and the list -->
   <main class="app-content">
+    <!-- Component responsible for adding new todos -->
     <app-todo-form></app-todo-form>
+    <!-- Component displaying todos and user actions -->
     <app-todo-list></app-todo-list>
   </main>
   
+  <!-- Simple footer -->
   <footer class="app-footer">
     <p>© 2025 Todo App</p>
   </footer>

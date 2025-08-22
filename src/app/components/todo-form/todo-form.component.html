@@ -1,5 +1,6 @@
-<!-- src/app/components/todo-form/todo-form.component.html -->
+<!-- Container for the input and add button -->
 <div class="todo-form">
+    <!-- Two-way binding captures user input; Enter key triggers add -->
     <input 
       type="text" 
       [(ngModel)]="newTodoTitle" 
@@ -7,5 +8,6 @@
       (keyup.enter)="addTodo()"
       class="todo-input"
     >
+    <!-- Click to add the new todo via the component method -->
     <button (click)="addTodo()" class="add-button">Add</button>
   </div>

@@ -1,19 +1,24 @@
-<!-- src/app/components/todo-list/todo-list.component.html -->
+<!-- List container rendering todos from the observable via async pipe -->
 <div class="todo-list">
+    <!-- Empty state shown when there are no items -->
     <div *ngIf="(todos$ | async)?.length === 0" class="empty-state">
       No todos yet. Add one above!
     </div>
     
+    <!-- Iterate over todos and render each item -->
     <div *ngFor="let todo of todos$ | async" class="todo-item" [class.completed]="todo.completed">
       <div class="todo-content">
+        <!-- Checkbox toggles completion -->
         <input 
           type="checkbox" 
           [checked]="todo.completed" 
           (change)="toggleTodo(todo.id)" 
           class="todo-checkbox"
         >
+        <!-- Display the todo title -->
         <span class="todo-title">{{ todo.title }}</span>
       </div>
+      <!-- Delete button removes the item -->
       <button (click)="deleteTodo(todo.id)" class="delete-button">✕</button>
     </div>
   </div>

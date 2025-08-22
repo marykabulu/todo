@@ -1,4 +1,8 @@
 // src/app/services/todo.service.ts
+// Central service managing the list of todos and persistence.
+// Exposes an observable stream for components and provides methods
+// to add, toggle, and delete todos. Data is persisted to Local Storage
+// via the StorageService.
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Todo } from '../models/todo.model';
@@ -13,6 +17,7 @@ export class TodoService {
   public todos$: Observable<Todo[]>;
 
   constructor(private storageService: StorageService) {
+    // Initialize the in-memory store from Local Storage (if present)
     const storedTodos = this.storageService.getData<Todo[]>(this.STORAGE_KEY) || [];
     this.todosSubject = new BehaviorSubject<Todo[]>(storedTodos);
     this.todos$ = this.todosSubject.asObservable();
@@ -34,6 +39,7 @@ export class TodoService {
       createdAt: new Date()
     };
 
+    // Merge new todo with current list and persist
     const currentTodos = this.todosSubject.getValue();
     const updatedTodos = [...currentTodos, newTodo];
     
@@ -43,6 +49,7 @@ export class TodoService {
 
   // Toggle todo completion status
   toggleTodo(id: string): void {
+    // Flip the completed flag for the matching todo
     const currentTodos = this.todosSubject.getValue();
     const updatedTodos = currentTodos.map(todo => 
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -54,6 +61,7 @@ export class TodoService {
 
   // Delete a todo
   deleteTodo(id: string): void {
+    // Remove the todo with the given id
     const currentTodos = this.todosSubject.getValue();
     const updatedTodos = currentTodos.filter(todo => todo.id !== id);
 
@@ -63,17 +71,15 @@ export class TodoService {
 
   // Helper method to save todos to storage
   private saveTodos(todos: Todo[]): void {
+    // Persist the entire list to Local Storage
     this.storageService.saveData(this.STORAGE_KEY, todos);
   }
 
   // Helper method to generate a unique ID
   private generateId(): string {
+    // Create a compact unique id using timestamp and random segment
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
   }
 
-  // Future method to fetch todos from API
-  // fetchTodosFromApi(): Observable<Todo[]> {
-  //   // This will be implemented when migrating to external DB
-  //   // return this.http.get<Todo[]>('api/todos');
-  // }
+  
 }

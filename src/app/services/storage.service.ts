@@ -1,4 +1,6 @@
 // src/app/services/storage.service.ts
+// Thin wrapper around Web Storage that only accesses localStorage in the browser.
+// Provides simple JSON get/save/remove helpers and guards against server-side contexts.
 import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
