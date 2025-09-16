@@ -1,27 +1,84 @@
-# Todo
+# Todo App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.13.
+A simple and elegant todo application built with Angular 17. Manage your tasks with ease - add, complete, and delete todos with persistent local storage.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- ✅ Add new todos
+- ✅ Mark todos as complete/incomplete
+- ✅ Delete todos
+- ✅ Persistent storage (localStorage)
+- ✅ Responsive design
+- ✅ Clean, modern UI
 
-## Code scaffolding
+## Tech Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular 17** - Frontend framework
+- **TypeScript** - Programming language
+- **SCSS** - Styling
+- **Local Storage** - Data persistence
 
-## Build
+## Project Structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+src/app/
+├── components/
+│   ├── todo-form/     # Add new todos
+│   └── todo-list/     # Display and manage todos
+├── models/
+│   └── todo.model.ts  # Todo interface
+└── services/
+    ├── todo.service.ts     # Todo business logic
+    └── storage.service.ts  # Local storage operations
+```
 
-## Running unit tests
+## Getting Started
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Prerequisites
 
-## Running end-to-end tests
+- Node.js (v18 or higher)
+- npm or yarn
+- Angular CLI
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Installation
 
-## Further help
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd todo
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+4. Open your browser and navigate to `http://localhost:4200`
+
+## Available Scripts
+
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm test` - Run unit tests
+- `npm run watch` - Build in watch mode
+
+## Usage
+
+1. **Add a todo**: Type your task in the input field and press Enter or click "Add"
+2. **Complete a todo**: Click the checkbox to mark as complete
+3. **Delete a todo**: Click the delete button to remove a task
+
+All todos are automatically saved to your browser's local storage.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests
+5. Submit a pull request
